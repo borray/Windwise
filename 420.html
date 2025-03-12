@@ -2,57 +2,102 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Настройки парусов для яхты класса 420 - Windwise</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
+    /* Global settings */
+    * {
+      box-sizing: border-box;
+    }
+    html, body {
       margin: 0;
       padding: 0;
+      background-color: #f4f4f4;
+      font-family: Arial, sans-serif;
       color: #333;
     }
-    header {
-      background-color: #007BFF;
-      color: #fff;
-      text-align: center;
+    /* Header as a near-full-width card with small margins */
+    .header-container {
+      width: calc(100% - 20px);
+      margin: 10px;
       padding: 20px;
+      background-color: #007BFF;
+      border-radius: 10px;
+      text-align: center;
+      color: #fff;
     }
+    .logo {
+      background-color: #fff;
+      border: 2px solid #007BFF;
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 2em;
+      color: #007BFF;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    .logo sup {
+      font-size: 0.5em;
+      vertical-align: top;
+      margin-left: 2px;
+    }
+    /* Main content container */
     .container {
       max-width: 1000px;
       margin: 20px auto;
       padding: 20px;
       background-color: #fff;
+      border-radius: 10px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-    section {
-      margin-bottom: 40px;
-    }
     h2 {
-      color: #007BFF;
+      margin-top: 0;
     }
-    h3 {
-      color: #0056b3;
-      margin-top: 20px;
+    /* Wind condition block container */
+    .wind-block {
+      margin-bottom: 30px;
+      border: 2px solid #007BFF;
+      border-radius: 10px;
+      background-color: #e9f2ff;
+      padding: 15px;
+    }
+    /* Each sail block inside a wind block */
+    .sail-block {
+      margin-bottom: 20px;
+      border: 1px solid #007BFF;
+      border-radius: 8px;
+      background-color: #fff;
+      padding: 10px;
+    }
+    .sail-block h3 {
+      margin: 0 0 10px 0;
+      background-color: #007BFF;
+      color: #fff;
+      padding: 8px;
+      border-radius: 5px;
+      text-align: center;
+      font-size: 1.1em;
     }
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 10px;
-    }
-    table, th, td {
-      border: 2px solid #007BFF;
     }
     th, td {
-      padding: 10px;
+      padding: 8px;
       text-align: center;
+      border: 1px solid #007BFF;
     }
     th {
       background-color: #007BFF;
       color: #fff;
     }
-    td {
-      background-color: #e9f2ff;
+    footer {
+      max-width: 1000px;
+      margin: 20px auto 10px auto;
+      padding: 10px;
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      border-radius: 10px;
     }
     p {
       line-height: 1.6;
@@ -60,252 +105,266 @@
   </style>
 </head>
 <body>
-  <header>
+  <div class="header-container">
+    <div class="logo">WIND<sup>WISE</sup></div>
     <h1>Настройки парусов для яхты класса 420</h1>
-  </header>
-
+  </div>
+  
   <div class="container">
-    <!-- Общая информация -->
     <section>
       <h2>Общие сведения о яхте класса 420</h2>
       <p>
-        Яхта класса 420 предназначена для соревнований и обучения. Эта модель активно используется в парусном спорте, предоставляя оптимальный баланс скорости, маневренности и стабильности.
+        Яхта класса 420 предназначена для соревнований и обучения, предоставляя оптимальный баланс скорости, маневренности и стабильности.
         Ниже приведены оптимальные настройки парусов для различных ветровых условий.
       </p>
     </section>
-
-    <!-- Слабый ветер (1–6 узлов) -->
+    
+    <!-- Weak Wind Section -->
     <section>
       <h2>Слабый ветер (1–6 узлов)</h2>
-      
-      <!-- Грот -->
-      <h3>Грот (Main Sail)</h3>
-      <table>
-        <tr>
-          <th>Параметр</th>
-          <th>Настройка</th>
-        </tr>
-        <tr>
-          <td>Натяжение штага</td>
-          <td>Слабое натяжение (есть складки)</td>
-        </tr>
-        <tr>
-          <td>Натяжение гика</td>
-          <td>Провис ~2–3 см</td>
-        </tr>
-        <tr>
-          <td>Оттяжка гика (ванг)</td>
-          <td>Ослаблен (твист открыт)</td>
-        </tr>
-        <tr>
-          <td>Угол атаки</td>
-          <td>Увеличен</td>
-        </tr>
-        <tr>
-          <td>Глубина профиля</td>
-          <td>Максимальная полнота</td>
-        </tr>
-      </table>
-      
-      <!-- Стаксель -->
-      <h3>Стаксель (Jib)</h3>
-      <table>
-        <tr>
-          <th>Параметр</th>
-          <th>Настройка</th>
-        </tr>
-        <tr>
-          <td>Натяжение фала</td>
-          <td>Слабое</td>
-        </tr>
-        <tr>
-          <td>Угол атаки</td>
-          <td>Немного открыт</td>
-        </tr>
-        <tr>
-          <td>Положение кареток</td>
-          <td>Вперёд (пузатый профиль)</td>
-        </tr>
-      </table>
-      
-      <!-- Спинакер -->
-      <h3>Спинакер (Spinnaker)</h3>
-      <table>
-        <tr>
-          <th>Параметр</th>
-          <th>Настройка</th>
-        </tr>
-        <tr>
-          <td>Шкоты</td>
-          <td>Максимально травлены</td>
-        </tr>
-        <tr>
-          <td>Высота подъёма</td>
-          <td>Высокая (гик чуть выше гориз.)</td>
-        </tr>
-        <tr>
-          <td>Угол к ветру</td>
-          <td>150–170° (полный бакштаг)</td>
-        </tr>
-      </table>
+      <div class="wind-block">
+        <!-- Main Sail (Грот) -->
+        <div class="sail-block">
+          <h3>Грот (Main Sail)</h3>
+          <table>
+            <tr>
+              <th>Параметр</th>
+              <th>Настройка</th>
+            </tr>
+            <tr>
+              <td>Натяжение штага</td>
+              <td>Слабое натяжение (есть складки)</td>
+            </tr>
+            <tr>
+              <td>Натяжение гика</td>
+              <td>Провис ~2–3 см</td>
+            </tr>
+            <tr>
+              <td>Оттяжка гика</td>
+              <td>Ослаблен (твист открыт)</td>
+            </tr>
+            <tr>
+              <td>Угол атаки</td>
+              <td>Увеличен</td>
+            </tr>
+            <tr>
+              <td>Глубина профиля</td>
+              <td>Максимальная полнота</td>
+            </tr>
+          </table>
+        </div>
+        <!-- Jib (Стаксель) -->
+        <div class="sail-block">
+          <h3>Стаксель (Jib)</h3>
+          <table>
+            <tr>
+              <th>Параметр</th>
+              <th>Настройка</th>
+            </tr>
+            <tr>
+              <td>Натяжение фала</td>
+              <td>Слабое</td>
+            </tr>
+            <tr>
+              <td>Угол атаки</td>
+              <td>Немного открыт</td>
+            </tr>
+            <tr>
+              <td>Положение кареток</td>
+              <td>Вперёд (пузатый профиль)</td>
+            </tr>
+          </table>
+        </div>
+        <!-- Spinnaker (Спинакер) -->
+        <div class="sail-block">
+          <h3>Спинакер (Spinnaker)</h3>
+          <table>
+            <tr>
+              <th>Параметр</th>
+              <th>Настройка</th>
+            </tr>
+            <tr>
+              <td>Шкоты</td>
+              <td>Максимально травлены</td>
+            </tr>
+            <tr>
+              <td>Высота подъёма</td>
+              <td>Высокая (гик чуть выше гориз.)</td>
+            </tr>
+            <tr>
+              <td>Угол к ветру</td>
+              <td>150–170° (полный бакштаг)</td>
+            </tr>
+          </table>
+        </div>
+      </div>
     </section>
-
-    <!-- Средний ветер (7–14 узлов) -->
+    
+    <!-- Medium Wind Section -->
     <section>
       <h2>Средний ветер (7–14 узлов)</h2>
-      
-      <!-- Грот -->
-      <h3>Грот (Main Sail)</h3>
-      <table>
-        <tr>
-          <th>Параметр</th>
-          <th>Настройка</th>
-        </tr>
-        <tr>
-          <td>Натяжение штага</td>
-          <td>Умеренное (без складок)</td>
-        </tr>
-        <tr>
-          <td>Натяжение гика</td>
-          <td>Умеренно натянуто</td>
-        </tr>
-        <tr>
-          <td>Оттяжка гика (ванг)</td>
-          <td>Среднее натяжение</td>
-        </tr>
-        <tr>
-          <td>Угол атаки</td>
-          <td>Нейтральный</td>
-        </tr>
-        <tr>
-          <td>Глубина профиля</td>
-          <td>Средняя полнота</td>
-        </tr>
-      </table>
-      
-      <!-- Стаксель -->
-      <h3>Стаксель (Jib)</h3>
-      <table>
-        <tr>
-          <th>Параметр</th>
-          <th>Настройка</th>
-        </tr>
-        <tr>
-          <td>Натяжение фала</td>
-          <td>Среднее</td>
-        </tr>
-        <tr>
-          <td>Угол атаки</td>
-          <td>Нейтральный</td>
-        </tr>
-        <tr>
-          <td>Положение кареток</td>
-          <td>Нейтральное</td>
-        </tr>
-      </table>
-      
-      <!-- Спинакер -->
-      <h3>Спинакер (Spinnaker)</h3>
-      <table>
-        <tr>
-          <th>Параметр</th>
-          <th>Настройка</th>
-        </tr>
-        <tr>
-          <td>Настройка шкотов</td>
-          <td>Среднее натяжение</td>
-        </tr>
-        <tr>
-          <td>Высота подъёма</td>
-          <td>Средняя</td>
-        </tr>
-        <tr>
-          <td>Угол к ветру</td>
-          <td>~140–160° (бакштаг)</td>
-        </tr>
-      </table>
+      <div class="wind-block">
+        <!-- Main Sail (Грот) -->
+        <div class="sail-block">
+          <h3>Грот (Main Sail)</h3>
+          <table>
+            <tr>
+              <th>Параметр</th>
+              <th>Настройка</th>
+            </tr>
+            <tr>
+              <td>Натяжение штага</td>
+              <td>Умеренное (без складок)</td>
+            </tr>
+            <tr>
+              <td>Натяжение гика</td>
+              <td>Умеренно натянуто</td>
+            </tr>
+            <tr>
+              <td>Оттяжка гика</td>
+              <td>Среднее натяжение</td>
+            </tr>
+            <tr>
+              <td>Угол атаки</td>
+              <td>Нейтральный</td>
+            </tr>
+            <tr>
+              <td>Глубина профиля</td>
+              <td>Средняя полнота</td>
+            </tr>
+          </table>
+        </div>
+        <!-- Jib (Стаксель) -->
+        <div class="sail-block">
+          <h3>Стаксель (Jib)</h3>
+          <table>
+            <tr>
+              <th>Параметр</th>
+              <th>Настройка</th>
+            </tr>
+            <tr>
+              <td>Натяжение фала</td>
+              <td>Среднее</td>
+            </tr>
+            <tr>
+              <td>Угол атаки</td>
+              <td>Нейтральный</td>
+            </tr>
+            <tr>
+              <td>Положение кареток</td>
+              <td>Нейтральное</td>
+            </tr>
+          </table>
+        </div>
+        <!-- Spinnaker (Спинакер) -->
+        <div class="sail-block">
+          <h3>Спинакер (Spinnaker)</h3>
+          <table>
+            <tr>
+              <th>Параметр</th>
+              <th>Настройка</th>
+            </tr>
+            <tr>
+              <td>Настройка шкотов</td>
+              <td>Среднее натяжение</td>
+            </tr>
+            <tr>
+              <td>Высота подъёма</td>
+              <td>Средняя</td>
+            </tr>
+            <tr>
+              <td>Угол к ветру</td>
+              <td>~140–160° (бакштаг)</td>
+            </tr>
+          </table>
+        </div>
+      </div>
     </section>
-
-    <!-- Сильный ветер (15+ узлов) -->
+    
+    <!-- Strong Wind Section -->
     <section>
       <h2>Сильный ветер (15+ узлов)</h2>
-      
-      <!-- Грот -->
-      <h3>Грот (Main Sail)</h3>
-      <table>
-        <tr>
-          <th>Параметр</th>
-          <th>Настройка</th>
-        </tr>
-        <tr>
-          <td>Натяжение штага</td>
-          <td>Сильное</td>
-        </tr>
-        <tr>
-          <td>Натяжение гика</td>
-          <td>Максимально натянуто</td>
-        </tr>
-        <tr>
-          <td>Оттяжка гика (ванг)</td>
-          <td>Максимально натянут</td>
-        </tr>
-        <tr>
-          <td>Угол атаки</td>
-          <td>Уменьшен</td>
-        </tr>
-        <tr>
-          <td>Глубина профиля</td>
-          <td>Минимальная (плоский парус)</td>
-        </tr>
-      </table>
-      
-      <!-- Стаксель -->
-      <h3>Стаксель (Jib)</h3>
-      <table>
-        <tr>
-          <th>Параметр</th>
-          <th>Настройка</th>
-        </tr>
-        <tr>
-          <td>Натяжение фала</td>
-          <td>Сильное</td>
-        </tr>
-        <tr>
-          <td>Угол атаки</td>
-          <td>Открытый</td>
-        </tr>
-        <tr>
-          <td>Положение кареток</td>
-          <td>Назад</td>
-        </tr>
-      </table>
-      
-      <!-- Спинакер -->
-      <h3>Спинакер (Spinnaker)</h3>
-      <table>
-        <tr>
-          <th>Параметр</th>
-          <th>Настройка</th>
-        </tr>
-        <tr>
-          <td>Настройка шкотов</td>
-          <td>Умеренно подобраны</td>
-        </tr>
-        <tr>
-          <td>Высота подъёма</td>
-          <td>Низкая</td>
-        </tr>
-        <tr>
-          <td>Угол к ветру</td>
-          <td>~130–150° (острый бакштаг)</td>
-        </tr>
-      </table>
-    </section>
-
-    <!-- Примечание -->
-    <section>
-      <p><strong>Примечание:</strong> Все размеры указаны в сантиметрах. Эти настройки рассчитаны на оптимальный баланс скорости, устойчивости и безопасности в различных ветровых условиях.</p>
+      <div class="wind-block">
+        <!-- Main Sail (Грот) -->
+        <div class="sail-block">
+          <h3>Грот (Main Sail)</h3>
+          <table>
+            <tr>
+              <th>Параметр</th>
+              <th>Настройка</th>
+            </tr>
+            <tr>
+              <td>Натяжение штага</td>
+              <td>Сильное натяжение – туго натянуть</td>
+            </tr>
+            <tr>
+              <td>Натяжение гика</td>
+              <td>Максимально натянуто</td>
+            </tr>
+            <tr>
+              <td>Оттяжка гика</td>
+              <td>Максимально натянут</td>
+            </tr>
+            <tr>
+              <td>Угол атаки</td>
+              <td>Уменьшен</td>
+            </tr>
+            <tr>
+              <td>Глубина профиля</td>
+              <td>Минимальная (плоский парус)</td>
+            </tr>
+          </table>
+        </div>
+        <!-- Jib (Стаксель) -->
+        <div class="sail-block">
+          <h3>Стаксель (Jib)</h3>
+          <table>
+            <tr>
+              <th>Параметр</th>
+              <th>Настройка</th>
+            </tr>
+            <tr>
+              <td>Натяжение фала</td>
+              <td>Сильное</td>
+            </tr>
+            <tr>
+              <td>Угол атаки</td>
+              <td>Открытый</td>
+            </tr>
+            <tr>
+              <td>Положение кареток</td>
+              <td>Назад</td>
+            </tr>
+          </table>
+        </div>
+        <!-- Spinnaker (Спинакер) -->
+        <div class="sail-block">
+          <h3>Спинакер (Spinnaker)</h3>
+          <table>
+            <tr>
+              <th>Параметр</th>
+              <th>Настройка</th>
+            </tr>
+            <tr>
+              <td>Настройка шкотов</td>
+              <td>Умеренно подобраны</td>
+            </tr>
+            <tr>
+              <td>Высота подъёма</td>
+              <td>Низкая</td>
+            </tr>
+            <tr>
+              <td>Угол к ветру</td>
+              <td>~130–150° (острый бакштаг)</td>
+            </tr>
+          </table>
+        </div>
+      </div>
     </section>
   </div>
+  
+  <footer>
+    <p>&copy; 2025 Windwise. Все права защищены.</p>
+  </footer>
 </body>
 </html>

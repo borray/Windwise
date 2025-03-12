@@ -1,78 +1,129 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+  <link rel="icon" type="image/x-icon" href="logo.ico">
   <meta charset="UTF-8">
-  <title>Настройки паруса для яхты класса Optimist - Windwise</title>
+  <title>Настройки паруса для яхты класса Optimist - Experimental Design</title>
   <style>
-    /* Global settings */
+    /* Global reset and box-sizing */
     * {
       box-sizing: border-box;
-    }
-    html, body {
       margin: 0;
       padding: 0;
-      background-color: #f4f4f4;
-      font-family: Arial, sans-serif;
-      color: #333;
     }
-    /* Header as a near-full-width card */
-    .header-container {
-      width: calc(100% - 20px);
-      margin: 10px;
-      padding: 20px;
-      background-color: #007BFF;
-      border-radius: 10px;
-      text-align: center;
-      color: #fff;
+    html, body {
+      width: 100%;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      overflow-x: hidden;
+    }
+    
+    /* Keyframes for smooth animations */
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideInUp {
+      0% { opacity: 0; transform: translateY(80px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Gradient header with experimental clipped bottom and reduced height */
+    .header {
+      position: relative;
+      width: 100%;
+      height: 30vh;
+      background: linear-gradient(120deg, #007BFF, #00b4ff);
+      clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: fadeIn 1s ease forwards;
+    }
+    /* Logo container in header */
+    .logo-container {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      cursor: pointer;
+      z-index: 10;
+      animation: fadeIn 1s ease forwards;
     }
     .logo {
       background-color: #fff;
       border: 2px solid #007BFF;
-      display: inline-block;
-      padding: 10px 20px;
-      font-size: 2em;
+      padding: 5px 15px;
+      font-size: 1.5em;
       color: #007BFF;
       border-radius: 5px;
-      margin-bottom: 10px;
     }
     .logo sup {
       font-size: 0.5em;
       vertical-align: top;
       margin-left: 2px;
     }
-    /* Main container */
+    /* Centered header text */
+    .header h1 {
+      color: #fff;
+      font-size: 2.5em;
+      text-align: center;
+    }
+    
+    /* Main content container */
     .container {
-      max-width: 1000px;
-      margin: 20px auto;
+      max-width: 1200px;
+      margin: 40px auto;
       padding: 20px;
       background-color: #fff;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      animation: fadeIn 1.5s ease forwards;
     }
-    h2 {
-      margin-top: 0;
-    }
-    /* Wind condition block */
-    .wind-block {
+    .container h2 {
+      text-align: center;
       margin-bottom: 20px;
+      color: #007BFF;
+    }
+    .container p {
+      font-size: 1.1em;
+      line-height: 1.6;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+    /* Experimental grid for wind condition cards */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      animation: slideInUp 1.8s ease forwards;
+    }
+    .card {
+      background-color: #e9f2ff;
       border: 2px solid #007BFF;
       border-radius: 10px;
-      background-color: #e9f2ff;
-      padding: 10px;
+      padding: 15px;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
-    .wind-block h3 {
-      margin: 0 0 10px 0;
-      background-color: #007BFF;
-      color: #fff;
-      padding: 10px;
-      border-radius: 8px;
+    .card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    .card h3 {
+      margin-bottom: 10px;
+      color: #007BFF;
       text-align: center;
+      font-size: 1.3em;
     }
     table {
       width: 100%;
       border-collapse: collapse;
+      margin-top: 10px;
     }
     th, td {
+      border: 1px solid #007BFF;
       padding: 8px;
       text-align: center;
     }
@@ -80,59 +131,61 @@
       background-color: #007BFF;
       color: #fff;
     }
-    td {
-      background-color: #fff;
-      border: 1px solid #007BFF;
-    }
+    
+    /* Footer */
     footer {
-      max-width: 1000px;
-      margin: 20px auto 10px auto;
-      padding: 10px;
       background-color: #333;
       color: #fff;
       text-align: center;
+      padding: 10px;
+      margin: 20px auto;
       border-radius: 10px;
+      max-width: 1200px;
+      animation: fadeIn 2s ease forwards;
     }
   </style>
 </head>
 <body>
-  <div class="header-container">
-    <div class="logo">WIND<sup>WISE</sup></div>
-    <h1>Настройки паруса для яхты класса Optimist</h1>
-  </div>
+  <!-- Gradient Header -->
+  <header class="header">
+    <div class="logo-container" onclick="location.href='index.html'">
+      <div class="logo">WIND<sup>WISE</sup></div>
+    </div>
+    <h1>Настройки Optimist</h1>
+  </header>
   
+  <!-- Main Content Container -->
   <div class="container">
-    <section>
-      <h2>Общие сведения об Optimist</h2>
-      <p>
-        Optimist — это маленькая, стабильная и легкая в управлении парусная лодка, предназначенная преимущественно для юных яхтсменов. 
-        Благодаря своей конструкции, она обеспечивает безопасное и комфортное обучение парусному спорту.
-      </p>
-    </section>
-
-    <section>
-      <h2>Настройки при слабом ветре (1–6 узлов)</h2>
-      <div class="wind-block">
-        <h3>Слабый ветер</h3>
+    <h2>Общие сведения об Optimist</h2>
+    <p>
+      Optimist — это маленькая, стабильная и легкая в управлении парусная лодка, предназначенная для юных яхтсменов.
+      Здесь вы найдете рекомендации по настройке паруса, сгруппированные по ветровым условиям.
+    </p>
+    
+    <!-- Experimental Grid: Each card represents a wind condition with its table -->
+    <div class="grid">
+      <!-- Weak Wind Card -->
+      <div class="card">
+        <h3>Слабый ветер (1–6 узлов)</h3>
         <table>
           <tr>
             <th>Параметр</th>
             <th>Настройка</th>
           </tr>
           <tr>
-            <td>Натяжение штага <br>(передняя шкаторина)</td>
-            <td>Слабое натяжение – оставить складки</td>
+            <td>Натяжение штага</td>
+            <td>Слабое, оставить складки</td>
           </tr>
           <tr>
-            <td>Натяжение гика <br>(нижняя шкаторина)</td>
+            <td>Натяжение гика</td>
             <td>Ослаблено, провис ~2 см</td>
           </tr>
           <tr>
             <td>Угол наклона мачты</td>
-            <td>Максимальная вертикальность</td>
+            <td>Максимальная вертикальность<br>(~278–280 см)</td>
           </tr>
           <tr>
-            <td>Оттяжка гика (ванг)</td>
+            <td>Оттяжка гика</td>
             <td>Не натягивать</td>
           </tr>
           <tr>
@@ -149,31 +202,29 @@
           </tr>
         </table>
       </div>
-    </section>
-
-    <section>
-      <h2>Настройки при среднем ветре (7–14 узлов)</h2>
-      <div class="wind-block">
-        <h3>Средний ветер</h3>
+      
+      <!-- Medium Wind Card -->
+      <div class="card">
+        <h3>Средний ветер (7–14 узлов)</h3>
         <table>
           <tr>
             <th>Параметр</th>
             <th>Настройка</th>
           </tr>
           <tr>
-            <td>Натяжение штага <br>(передняя шкаторина)</td>
-            <td>Умеренное натяжение – подтянуть до исчезновения складок</td>
+            <td>Натяжение штага</td>
+            <td>Умеренное, без складок</td>
           </tr>
           <tr>
-            <td>Натяжение гика <br>(нижняя шкаторина)</td>
+            <td>Натяжение гика</td>
             <td>Умеренно натянуто, провис ~1 см</td>
           </tr>
           <tr>
             <td>Угол наклона мачты</td>
-            <td>Слегка отклонена назад</td>
+            <td>Слегка назад<br>(~276–278 см)</td>
           </tr>
           <tr>
-            <td>Оттяжка гика (ванг)</td>
+            <td>Оттяжка гика</td>
             <td>Подтянуть умеренно</td>
           </tr>
           <tr>
@@ -190,32 +241,30 @@
           </tr>
         </table>
       </div>
-    </section>
-
-    <section>
-      <h2>Настройки при сильном ветре (15+ узлов)</h2>
-      <div class="wind-block">
-        <h3>Сильный ветер</h3>
+      
+      <!-- Strong Wind Card -->
+      <div class="card">
+        <h3>Сильный ветер (15+ узлов)</h3>
         <table>
           <tr>
             <th>Параметр</th>
             <th>Настройка</th>
           </tr>
           <tr>
-            <td>Натяжение штага <br>(передняя шкаторина)</td>
-            <td>Сильное натяжение – туго натянуть</td>
+            <td>Натяжение штага</td>
+            <td>Сильное, устранить складки</td>
           </tr>
           <tr>
-            <td>Натяжение гика <br>(нижняя шкаторина)</td>
-            <td>Максимально натянуто</td>
+            <td>Натяжение гика</td>
+            <td>Максимально натянуть</td>
+          </tr>
+          <tr>
+            <td>Оттяжка гика</td>
+            <td>Максимально натянут</td>
           </tr>
           <tr>
             <td>Угол наклона мачты</td>
-            <td>Значительное отклонение назад</td>
-          </tr>
-          <tr>
-            <td>Оттяжка гика (ванг)</td>
-            <td>Туго натянуть</td>
+            <td>Сильное отклонение<br>(~274–276 см)</td>
           </tr>
           <tr>
             <td>Предварительный изгиб мачты</td>
@@ -223,7 +272,7 @@
           </tr>
           <tr>
             <td>Угол крена лодки</td>
-            <td>15–20 узлов: 0°; 20+ узлов: 5°–10°</td>
+            <td>15–20 узлов: 0°; 20+ узлов: 5–10°</td>
           </tr>
           <tr>
             <td>Центроборд</td>
@@ -231,12 +280,12 @@
           </tr>
         </table>
       </div>
-    </section>
+    </div>
   </div>
-
+  
+  <!-- Footer -->
   <footer>
     <p>&copy; 2025 Windwise. Все права защищены.</p>
   </footer>
 </body>
 </html>
-

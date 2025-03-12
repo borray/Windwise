@@ -1,29 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
   <title>Windwise - Main Page</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
+    /* Глобальное правило для корректного расчёта размеров */
+    * {
+      box-sizing: border-box;
+    }
+    html, body {
       margin: 0;
       padding: 0;
+      width: 100%;
       background-color: #f4f4f4;
+      font-family: Arial, sans-serif;
       color: #333;
     }
-    header {
-      background-color: #007BFF;
-      color: #fff;
-      text-align: center;
+    /* Шапка – карточка почти во всю ширину, с отступами от краёв */
+    .header-container {
+      max-width: 1200px;
+      margin: 10px auto;
       padding: 20px;
+      background-color: #007BFF;
+      border-radius: 10px;
+      text-align: center;
+      color: #fff;
     }
-    /* Новый логотип */
     .logo {
       background-color: #fff;
       border: 2px solid #007BFF;
       display: inline-block;
       padding: 10px 20px;
-      font-family: Arial, sans-serif;
       font-size: 2em;
       color: #007BFF;
       border-radius: 5px;
@@ -34,22 +41,25 @@
       vertical-align: top;
       margin-left: 2px;
     }
+    /* Основной контейнер страницы */
     .container {
       max-width: 1000px;
       margin: 20px auto;
       padding: 20px;
       background-color: #fff;
+      border-radius: 10px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
     h2 {
       margin-top: 0;
     }
-    /* Кнопки в виде карточек для Optimist и 420 */
+    /* Карточки для выбора классов */
     .nav-cards {
       display: flex;
       justify-content: center;
       gap: 40px;
       margin: 40px 0;
+      flex-wrap: wrap;
     }
     .nav-card {
       display: flex;
@@ -62,6 +72,7 @@
       width: 220px;
       overflow: hidden;
       transition: background-color 0.3s, color 0.3s, transform 0.3s;
+      background-color: #fff;
     }
     .nav-card:hover {
       background-color: #007BFF;
@@ -81,13 +92,13 @@
       text-align: center;
     }
     footer {
+      max-width: 1200px;
+      margin: 20px auto 10px auto;
+      padding: 10px;
       background-color: #333;
       color: #fff;
       text-align: center;
-      padding: 10px;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
+      border-radius: 10px;
     }
     .intro-text {
       line-height: 1.6;
@@ -96,30 +107,25 @@
   </style>
 </head>
 <body>
-  <header>
+  <div class="header-container">
     <div class="logo">WIND<sup>WISE</sup></div>
-    <p>Рекомендации по установке парусов для яхт класса Optimist и 420</p>
-  </header>
+    <h1>Рекомендации по установке парусов для яхт класса Optimist и 420</h1>
+  </div>
 
   <div class="container">
     <section>
       <h2>Выбери свой класс</h2>
       <p class="intro-text">
-        Здесь вы найдете рекомендации экспертов по установке парусов на
-        яхтах класса <strong>Optimist</strong> и <strong>420</strong>. 
-        Независимо от того, новичок вы или опытный яхтсмен, наши практические советы 
-        помогут вам добиться оптимальных характеристик на воде.
+        Здесь вы найдете рекомендации экспертов по установке парусов на яхтах класса <strong>Optimist</strong> и <strong>420</strong>.
+        Независимо от того, новичок вы или опытный яхтсмен, наши практические советы помогут вам добиться оптимальных характеристик на воде.
       </p>
     </section>
 
-    <!-- Секция с большими кликабельными карточками для каждого класса -->
     <section class="nav-cards">
-      <!-- Карточка для Optimist -->
       <a href="optimist.html" class="nav-card">
         <img src="OPTIMIST.png" alt="Optimist Yacht">
         <span>OPTIMIST</span>
       </a>
-      <!-- Карточка для 420 -->
       <a href="420.html" class="nav-card">
         <img src="420.png" alt="420 Yacht">
         <span>420</span>

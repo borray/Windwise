@@ -1,30 +1,59 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+  <link rel="icon" type="image/x-icon" href="logo.ico">
   <meta charset="UTF-8">
-  <title>Windwise - Main Page</title>
+  <title>Windwise - Главная страница</title>
   <style>
-    /* Глобальное правило для корректного расчёта размеров */
+    /* Global settings */
     * {
       box-sizing: border-box;
-    }
-    html, body {
       margin: 0;
       padding: 0;
-      width: 100%;
-      background-color: #f4f4f4;
-      font-family: Arial, sans-serif;
-      color: #333;
     }
-    /* Шапка – карточка почти во всю ширину, с отступами от краёв */
-    .header-container {
-      max-width: 1200px;
-      margin: 10px auto;
-      padding: 20px;
-      background-color: #007BFF;
-      border-radius: 10px;
-      text-align: center;
-      color: #fff;
+    html, body {
+      width: 100%;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      color: #333;
+      overflow-x: hidden; /* Prevent horizontal scroll */
+    }
+
+    /* Keyframes for smooth animations */
+    @keyframes fadeInDown {
+      0% { opacity: 0; transform: translateY(-50px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(50px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideInUp {
+      0% { opacity: 0; transform: translateY(80px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Hero section with a gradient background */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 70vh; /* 70% of the viewport height */
+      background: linear-gradient(120deg, #007BFF 0%, #00b4ff 100%);
+      border-bottom-left-radius: 100px 50px;
+      border-bottom-right-radius: 100px 50px;
+      overflow: hidden;
+      animation: fadeInDown 1s ease forwards;
+    }
+
+    /* Logo in top-left corner */
+    .logo-container {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      cursor: pointer;
+      z-index: 10;
+      animation: fadeInDown 1s ease forwards;
     }
     .logo {
       background-color: #fff;
@@ -34,32 +63,60 @@
       font-size: 2em;
       color: #007BFF;
       border-radius: 5px;
-      margin-bottom: 10px;
     }
     .logo sup {
       font-size: 0.5em;
       vertical-align: top;
       margin-left: 2px;
     }
-    /* Основной контейнер страницы */
+
+    /* Hero content centered */
+    .hero-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: #fff;
+      animation: fadeInUp 1.2s ease forwards;
+    }
+    .hero-content h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+    }
+    .hero-content p {
+      font-size: 1.2em;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+
+    /* Main container below hero */
     .container {
       max-width: 1000px;
-      margin: 20px auto;
+      margin: -40px auto 0;
       padding: 20px;
       background-color: #fff;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      position: relative;
+      animation: fadeInUp 1.5s ease forwards;
     }
-    h2 {
+    .container h2 {
       margin-top: 0;
+      text-align: center;
+      color: #007BFF;
+      font-weight: normal;
     }
-    /* Карточки для выбора классов */
+
+    /* Card-style buttons for Optimist & 420 */
     .nav-cards {
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
       gap: 40px;
-      margin: 40px 0;
-      flex-wrap: wrap;
+      margin-top: 40px;
+      animation: slideInUp 1.8s ease forwards;
     }
     .nav-card {
       display: flex;
@@ -73,11 +130,12 @@
       overflow: hidden;
       transition: background-color 0.3s, color 0.3s, transform 0.3s;
       background-color: #fff;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
     .nav-card:hover {
       background-color: #007BFF;
       color: #fff;
-      transform: scale(1.03);
+      transform: translateY(-5px);
     }
     .nav-card img {
       width: 100%;
@@ -91,37 +149,120 @@
       font-weight: bold;
       text-align: center;
     }
+
+    /* Footer */
     footer {
-      max-width: 1200px;
-      margin: 20px auto 10px auto;
-      padding: 10px;
       background-color: #333;
       color: #fff;
       text-align: center;
-      border-radius: 10px;
+      padding: 10px;
+      margin-top: 40px;
     }
-    .intro-text {
+    footer p {
+      margin: 0;
+    }
+
+    /* Beta Badge - fixed in bottom right */
+    .beta-badge {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #ff4081;
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 10000;
+      transform: rotate(-10deg);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      transition: transform 0.3s;
+    }
+    .beta-badge:hover {
+      transform: rotate(0deg);
+    }
+
+    /* Modal Overlay for Beta Information */
+    .overlay {
+      position: fixed;
+      top: 0; 
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+      z-index: 9999;
+    }
+    .overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .modal {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 80%;
+      max-width: 600px;
+      background-color: #fff;
+      border-radius: 10px;
+      border: 2px solid #007BFF;
+      transform: translate(-50%, -50%) scale(0.8);
+      transition: transform 0.5s ease;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      padding: 20px;
+      text-align: center;
+    }
+    .overlay.active .modal {
+      transform: translate(-50%, -50%) scale(1);
+    }
+    .modal h2 {
+      margin-top: 0;
+      color: #007BFF;
+    }
+    .modal p {
+      font-size: 1em;
       line-height: 1.6;
-      margin-bottom: 30px;
+    }
+    .modal a {
+      color: #007BFF;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .modal a:hover {
+      text-decoration: underline;
+    }
+    .close-button {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      cursor: pointer;
+      font-size: 1.5em;
+      color: #007BFF;
+      font-weight: bold;
+    }
+    .close-button:hover {
+      color: #0056b3;
     }
   </style>
 </head>
 <body>
-  <div class="header-container">
-    <div class="logo">WIND<sup>WISE</sup></div>
-    <h1>Рекомендации по установке парусов для яхт класса Optimist и 420</h1>
-  </div>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="logo-container" onclick="location.href='index.html'">
+      <div class="logo">WIND<sup>WISE</sup></div>
+    </div>
+    <div class="hero-content">
+      <h1>Добро пожаловать в Windwise</h1>
+      <p>Ваш путеводитель по настройке парусов для яхт класса Optimist и 420. Улучшайте результаты и наслаждайтесь каждым выходом на воду!</p>
+    </div>
+  </section>
 
+  <!-- Main Container -->
   <div class="container">
-    <section>
-      <h2>Выбери свой класс</h2>
-      <p class="intro-text">
-        Здесь вы найдете рекомендации экспертов по установке парусов на яхтах класса <strong>Optimist</strong> и <strong>420</strong>.
-        Независимо от того, новичок вы или опытный яхтсмен, наши практические советы помогут вам добиться оптимальных характеристик на воде.
-      </p>
-    </section>
-
-    <section class="nav-cards">
+    <h2>Выберите свой класс</h2>
+    <div class="nav-cards">
       <a href="optimist.html" class="nav-card">
         <img src="OPTIMIST.png" alt="Optimist Yacht">
         <span>OPTIMIST</span>
@@ -130,11 +271,42 @@
         <img src="420.png" alt="420 Yacht">
         <span>420</span>
       </a>
-    </section>
+    </div>
   </div>
 
+  <!-- Beta Badge -->
+  <div class="beta-badge" id="betaBadge">Beta</div>
+
+  <!-- Modal Overlay for Beta Information -->
+  <div class="overlay" id="betaModal">
+    <div class="modal">
+      <span class="close-button" id="closeBeta">&times;</span>
+      <h2>Сайт в бета-версии</h2>
+      <p>
+        Этот сайт находится в стадии разработки и еще не готов к полномасштабному использованию.
+        Дизайн и функциональность могут измениться. Ознакомьтесь с исходным кодом и обновлениями на нашем 
+        <a href="https://github.com/borray/Windwise" target="_blank">GitHub</a>.
+      </p>
+    </div>
+  </div>
+
+  <!-- Footer -->
   <footer>
     <p>&copy; 2025 Windwise. Все права защищены.</p>
   </footer>
+
+  <script>
+    // Beta badge modal functionality
+    const betaBadge = document.getElementById('betaBadge');
+    const betaModal = document.getElementById('betaModal');
+    const closeBeta = document.getElementById('closeBeta');
+
+    betaBadge.addEventListener('click', () => {
+      betaModal.classList.add('active');
+    });
+    closeBeta.addEventListener('click', () => {
+      betaModal.classList.remove('active');
+    });
+  </script>
 </body>
 </html>

@@ -17,6 +17,23 @@
       text-align: center;
       padding: 20px;
     }
+    /* Новый логотип */
+    .logo {
+      background-color: #fff;
+      border: 2px solid #007BFF;
+      display: inline-block;
+      padding: 10px 20px;
+      font-family: Arial, sans-serif;
+      font-size: 2em;
+      color: #007BFF;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    .logo sup {
+      font-size: 0.5em;
+      vertical-align: top;
+      margin-left: 2px;
+    }
     .container {
       max-width: 1000px;
       margin: 20px auto;
@@ -27,11 +44,11 @@
     h2 {
       margin-top: 0;
     }
-    /* New “card-style” buttons for Optimist & 420 */
+    /* Кнопки в виде карточек для Optimist и 420 */
     .nav-cards {
       display: flex;
       justify-content: center;
-      gap: 40px; /* Spacing between the two cards */
+      gap: 40px;
       margin: 40px 0;
     }
     .nav-card {
@@ -42,21 +59,19 @@
       color: #333;
       border: 2px solid #007BFF;
       border-radius: 10px;
-      width: 220px; /* Adjust card width as desired */
+      width: 220px;
       overflow: hidden;
       transition: background-color 0.3s, color 0.3s, transform 0.3s;
     }
     .nav-card:hover {
       background-color: #007BFF;
       color: #fff;
-      transform: scale(1.03); /* Slightly enlarge on hover */
+      transform: scale(1.03);
     }
     .nav-card img {
       width: 100%;
       height: auto;
       display: block;
-      /* You can adjust object-fit if you want to crop images:
-         object-fit: contain; or object-fit: cover; */
     }
     .nav-card span {
       display: block;
@@ -74,7 +89,6 @@
       bottom: 0;
       width: 100%;
     }
-    /* Optional styling for “Welcome” text */
     .intro-text {
       line-height: 1.6;
       margin-bottom: 30px;
@@ -83,7 +97,7 @@
 </head>
 <body>
   <header>
-    <h1>WINDWISE</h1>
+    <div class="logo">WIND<sup>WISE</sup></div>
     <p>Рекомендации по установке парусов для яхт класса Optimist и 420</p>
   </header>
 
@@ -92,20 +106,20 @@
       <h2>Выбери свой класс</h2>
       <p class="intro-text">
         Здесь вы найдете рекомендации экспертов по установке парусов на
-яхтах класса <strong>Optimist</strong> и <strong>420</strong>. 
+        яхтах класса <strong>Optimist</strong> и <strong>420</strong>. 
         Независимо от того, новичок вы или опытный яхтсмен, наши практические советы 
         помогут вам добиться оптимальных характеристик на воде.
       </p>
     </section>
 
-    <!-- New section with large clickable images for each yacht class -->
+    <!-- Секция с большими кликабельными карточками для каждого класса -->
     <section class="nav-cards">
-      <!-- Optimist Card -->
+      <!-- Карточка для Optimist -->
       <a href="optimist.html" class="nav-card">
         <img src="OPTIMIST.png" alt="Optimist Yacht">
         <span>OPTIMIST</span>
       </a>
-      <!-- 420 Card -->
+      <!-- Карточка для 420 -->
       <a href="420.html" class="nav-card">
         <img src="420.png" alt="420 Yacht">
         <span>420</span>

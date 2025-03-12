@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Windwise - Sail Setting Recommendations</title>
+  <title>Windwise - Main Page</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -15,8 +14,8 @@
     header {
       background-color: #007BFF;
       color: #fff;
-      padding: 20px;
       text-align: center;
+      padding: 20px;
     }
     .container {
       max-width: 1000px;
@@ -25,24 +24,46 @@
       background-color: #fff;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-    .nav-links {
+    h2 {
+      margin-top: 0;
+    }
+    /* New “card-style” buttons for Optimist & 420 */
+    .nav-cards {
       display: flex;
       justify-content: center;
-      gap: 20px;
-      margin-top: 30px;
+      gap: 40px; /* Spacing between the two cards */
+      margin: 40px 0;
     }
-    .nav-links a {
+    .nav-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       text-decoration: none;
-      color: #007BFF;
-      font-size: 1.2em;
+      color: #333;
       border: 2px solid #007BFF;
-      padding: 10px 20px;
-      border-radius: 5px;
-      transition: background-color 0.3s, color 0.3s;
+      border-radius: 10px;
+      width: 220px; /* Adjust card width as desired */
+      overflow: hidden;
+      transition: background-color 0.3s, color 0.3s, transform 0.3s;
     }
-    .nav-links a:hover {
+    .nav-card:hover {
       background-color: #007BFF;
       color: #fff;
+      transform: scale(1.03); /* Slightly enlarge on hover */
+    }
+    .nav-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      /* You can adjust object-fit if you want to crop images:
+         object-fit: contain; or object-fit: cover; */
+    }
+    .nav-card span {
+      display: block;
+      padding: 15px;
+      font-size: 1.2em;
+      font-weight: bold;
+      text-align: center;
     }
     footer {
       background-color: #333;
@@ -53,31 +74,47 @@
       bottom: 0;
       width: 100%;
     }
+    /* Optional styling for “Welcome” text */
+    .intro-text {
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
   </style>
 </head>
 <body>
   <header>
-    <h1>Windwise</h1>
-    <p>Sail Setting Recommendations for Optimist and 420 Class Yachts</p>
+    <h1>WINDWISE</h1>
+    <p>Рекомендации по установке парусов для яхт класса Optimist и 420</p>
   </header>
 
   <div class="container">
     <section>
-      <h2>Welcome to Windwise</h2>
-      <p>
-        At Windwise, you’ll find expert recommendations for setting sails on Optimist and 420 class yachts. 
-        Our practical tips and advice are designed to help both beginners and seasoned sailors achieve optimal performance on the water.
+      <h2>Выбери свой класс</h2>
+      <p class="intro-text">
+        Здесь вы найдете рекомендации экспертов по установке парусов на
+яхтах класса <strong>Optimist</strong> и <strong>420</strong>. 
+        Независимо от того, новичок вы или опытный яхтсмен, наши практические советы 
+        помогут вам добиться оптимальных характеристик на воде.
       </p>
     </section>
 
-    <section class="nav-links">
-      <a href="optimist.html">Optimist Ladder</a>
-      <a href="420.html">420 Recommendations</a>
+    <!-- New section with large clickable images for each yacht class -->
+    <section class="nav-cards">
+      <!-- Optimist Card -->
+      <a href="optimist.html" class="nav-card">
+        <img src="OPTIMIST.png" alt="Optimist Yacht">
+        <span>OPTIMIST</span>
+      </a>
+      <!-- 420 Card -->
+      <a href="420.html" class="nav-card">
+        <img src="420.png" alt="420 Yacht">
+        <span>420</span>
+      </a>
     </section>
   </div>
 
   <footer>
-    <p>&copy; 2025 Windwise. All rights reserved.</p>
+    <p>&copy; 2025 Windwise. Все права защищены.</p>
   </footer>
 </body>
 </html>

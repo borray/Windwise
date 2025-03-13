@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <link rel="icon" type="image/x-icon" href="logo.ico">
   <meta charset="UTF-8">
-  <title>Настройки парусов для яхты класса 420 - Experimental Design</title>
+  <title>Optimist - Экспериментальный дизайн</title>
   <style>
-    /* Global reset and box-sizing */
+    /* Сброс и базовые настройки */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -15,39 +14,45 @@
       width: 100%;
       height: 100%;
       font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
+      background: #f4f4f4;
       color: #333;
       overflow-x: hidden;
     }
-    
-    /* Keyframes for animations */
+
+    /* Анимации */
     @keyframes fadeIn {
-      0% { opacity: 0; transform: translateY(20px); }
+      0%   { opacity: 0; transform: translateY(30px); }
       100% { opacity: 1; transform: translateY(0); }
     }
-    @keyframes slideIn {
-      0% { opacity: 0; transform: translateY(80px); }
-      100% { opacity: 1; transform: translateY(0); }
+    @keyframes scaleUp {
+      0%   { transform: scale(0.8); opacity: 0; }
+      100% { transform: scale(1);   opacity: 1; }
     }
-    
-    /* Gradient header with clipped bottom edge (experimental twist) */
-    header {
+    @keyframes floatIn {
+      0%   { transform: translateY(-20px); opacity: 0; }
+      100% { transform: translateY(0);     opacity: 1; }
+    }
+
+    /* Hero-секция с градиентом и flex-центрированием */
+    .hero {
       position: relative;
       width: 100%;
-      height: 30vh;
-      background: linear-gradient(120deg, #007BFF, #00b4ff);
-      clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+      height: 60vh;
+      background: linear-gradient(135deg, #00aaff, #007BFF);
+      border-bottom-left-radius: 100px 40px;
+      border-bottom-right-radius: 100px 40px;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      text-align: center;
       animation: fadeIn 1s ease forwards;
+      overflow: hidden;
     }
-    /* Clickable logo in top-left of header */
+    /* Логотип в левом верхнем углу */
     .logo-container {
       position: absolute;
-      top: 10px;
-      left: 10px;
+      top: 20px;
+      left: 20px;
       cursor: pointer;
       z-index: 10;
       animation: fadeIn 1s ease forwards;
@@ -55,8 +60,8 @@
     .logo {
       background-color: #fff;
       border: 2px solid #007BFF;
-      padding: 5px 15px;
-      font-size: 1.5em;
+      padding: 10px 20px;
+      font-size: 2em;
       color: #007BFF;
       border-radius: 5px;
     }
@@ -65,91 +70,109 @@
       vertical-align: top;
       margin-left: 2px;
     }
-    /* Centered header text */
-    header h1 {
-      color: #fff;
-      font-size: 2.5em;
-      text-align: center;
+    /* Эмблема класса */
+    .hero img.emblem {
+      width: 180px; /* при необходимости меняйте размер */
+      height: auto;
+      animation: floatIn 1.2s ease forwards;
+      margin-bottom: 20px;
     }
-    
-    /* Main content container */
+    .hero h1 {
+      color: #fff;
+      font-size: 2.8em;
+      margin-bottom: 10px;
+      animation: fadeIn 1.2s ease forwards;
+    }
+    .hero p {
+      color: #fff;
+      font-size: 1.2em;
+      max-width: 600px;
+      text-align: center;
+      animation: fadeIn 1.4s ease forwards;
+      opacity: 0.9;
+    }
+
+    /* Контейнер для карточек */
     .container {
       max-width: 1200px;
-      margin: 40px auto;
+      margin: -50px auto 40px; /* Поднимаем контейнер над героем */
       padding: 20px;
-      background-color: #fff;
-      border-radius: 15px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-      animation: fadeIn 1.5s ease forwards;
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      animation: scaleUp 0.8s ease forwards;
     }
     .container h2 {
       text-align: center;
       margin-bottom: 20px;
       color: #007BFF;
     }
-    .container p {
-      font-size: 1.1em;
-      line-height: 1.6;
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    
-    /* Grid layout for wind condition cards */
-    .grid {
+
+    /* Сетка карточек */
+    .cards-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-      animation: slideIn 1.8s ease forwards;
+      gap: 30px;
     }
-    .card {
-      background-color: #e9f2ff;
+    /* Каждая карточка под ветер */
+    .wind-card {
+      background: linear-gradient(160deg, #eaf6ff, #ffffff);
+      border-radius: 20px;
       border: 2px solid #007BFF;
-      border-radius: 10px;
-      padding: 15px;
-      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.07);
+      padding: 20px;
+      animation: fadeIn 1s ease forwards;
+      transition: transform 0.3s;
     }
-    .card:hover {
-      transform: scale(1.02);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    .wind-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     }
-    .card h3 {
-      margin-bottom: 10px;
-      color: #007BFF;
+    .wind-card h3 {
       text-align: center;
-      font-size: 1.3em;
-    }
-    .card h4 {
-      margin: 10px 0 5px;
       color: #007BFF;
-      font-size: 1.1em;
+      margin-bottom: 15px;
+      font-size: 1.5em;
     }
-    
-    /* Table styling */
-    table {
+    .wind-card h4 {
+      margin-top: 15px;
+      margin-bottom: 5px;
+      color: #007BFF;
+      font-size: 1.2em;
+      text-align: center;
+    }
+    .wind-card table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 5px;
+      margin-top: 10px;
+      border-radius: 10px;
+      overflow: hidden;
     }
-    th, td {
+    .wind-card table, .wind-card th, .wind-card td {
       border: 1px solid #007BFF;
+    }
+    .wind-card th {
+      background: #007BFF;
+      color: #fff;
+      padding: 8px;
+    }
+    .wind-card td {
+      background: #f9fcff;
       padding: 8px;
       text-align: center;
     }
-    th {
-      background-color: #007BFF;
-      color: #fff;
-    }
-    
-    /* Footer */
+
+    /* Футер */
     footer {
-      background-color: #333;
-      color: #fff;
       text-align: center;
+      background: #333;
+      color: #fff;
       padding: 10px;
-      margin: 20px auto;
-      border-radius: 10px;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
       max-width: 1200px;
-      animation: fadeIn 2s ease forwards;
+      margin: 0 auto 20px;
+      animation: fadeIn 1.5s ease forwards;
     }
     footer p {
       margin: 0;
@@ -157,33 +180,31 @@
   </style>
 </head>
 <body>
-  <!-- Header -->
-  <header>
+  <!-- Hero Section -->
+  <section class="hero">
+    <!-- Логотип в левом верхнем углу -->
     <div class="logo-container" onclick="location.href='index.html'">
       <div class="logo">WIND<sup>WISE</sup></div>
     </div>
-    <h1>Настройки парусов для яхты класса 420</h1>
-  </header>
-  
-  <!-- Main Content Container -->
+    <!-- Эмблема класса Optimist -->
+    <img src="420_e.png" alt="420 Emblem" class="emblem">
+    <h1>Яхта класса 420</h1>
+    <p>Откройте для себя рекомендации по настройке паруса в зависимости от ветра — всё для максимальной эффективности на воде!</p>
+  </section>
+
+  <!-- Основной контейнер с карточками -->
   <div class="container">
-    <h2>Оптимальные настройки в зависимости от ветра</h2>
-    <p>
-      Здесь представлены рекомендации по настройке парусов для яхты класса 420, сгруппированные по ветровым условиям.
-    </p>
-    <div class="grid">
-      <!-- Weak Wind Card -->
-      <div class="card">
+    <h2>Настройки паруса в разных ветровых условиях</h2>
+    <div class="cards-grid">
+      <!-- Карточка: Слабый ветер -->
+      <div class="wind-card">
         <h3>Слабый ветер (1–6 узлов)</h3>
         <h4>Грот (Main Sail)</h4>
         <table>
-          <tr>
-            <th>Параметр</th>
-            <th>Настройка</th>
-          </tr>
+          <tr><th>Параметр</th><th>Настройка</th></tr>
           <tr>
             <td>Натяжение штага</td>
-            <td>Слабое, оставить складки</td>
+            <td>Слабое – оставить складки</td>
           </tr>
           <tr>
             <td>Натяжение гика</td>
@@ -204,10 +225,7 @@
         </table>
         <h4>Стаксель (Jib)</h4>
         <table>
-          <tr>
-            <th>Параметр</th>
-            <th>Настройка</th>
-          </tr>
+          <tr><th>Параметр</th><th>Настройка</th></tr>
           <tr>
             <td>Натяжение фала</td>
             <td>Слабое</td>
@@ -218,22 +236,19 @@
           </tr>
           <tr>
             <td>Положение кареток</td>
-            <td>Вперёд (пузатый профиль)</td>
+            <td>Вперёд</td>
           </tr>
         </table>
         <h4>Спинакер (Spinnaker)</h4>
         <table>
-          <tr>
-            <th>Параметр</th>
-            <th>Настройка</th>
-          </tr>
+          <tr><th>Параметр</th><th>Настройка</th></tr>
           <tr>
             <td>Шкоты</td>
             <td>Максимально травлены</td>
           </tr>
           <tr>
             <td>Высота подъёма</td>
-            <td>Высокая (гик чуть выше гориз.)</td>
+            <td>Высокая</td>
           </tr>
           <tr>
             <td>Угол к ветру</td>
@@ -241,19 +256,16 @@
           </tr>
         </table>
       </div>
-      
-      <!-- Medium Wind Card -->
-      <div class="card">
+
+      <!-- Карточка: Средний ветер -->
+      <div class="wind-card">
         <h3>Средний ветер (7–14 узлов)</h3>
         <h4>Грот (Main Sail)</h4>
         <table>
-          <tr>
-            <th>Параметр</th>
-            <th>Настройка</th>
-          </tr>
+          <tr><th>Параметр</th><th>Настройка</th></tr>
           <tr>
             <td>Натяжение штага</td>
-            <td>Умеренное, без складок</td>
+            <td>Умеренное – исчезновение складок</td>
           </tr>
           <tr>
             <td>Натяжение гика</td>
@@ -261,7 +273,7 @@
           </tr>
           <tr>
             <td>Оттяжка гика</td>
-            <td>Среднее натяжение</td>
+            <td>Подтянуть умеренно</td>
           </tr>
           <tr>
             <td>Угол атаки</td>
@@ -274,10 +286,7 @@
         </table>
         <h4>Стаксель (Jib)</h4>
         <table>
-          <tr>
-            <th>Параметр</th>
-            <th>Настройка</th>
-          </tr>
+          <tr><th>Параметр</th><th>Настройка</th></tr>
           <tr>
             <td>Натяжение фала</td>
             <td>Среднее</td>
@@ -293,10 +302,7 @@
         </table>
         <h4>Спинакер (Spinnaker)</h4>
         <table>
-          <tr>
-            <th>Параметр</th>
-            <th>Настройка</th>
-          </tr>
+          <tr><th>Параметр</th><th>Настройка</th></tr>
           <tr>
             <td>Настройка шкотов</td>
             <td>Среднее натяжение</td>
@@ -311,19 +317,16 @@
           </tr>
         </table>
       </div>
-      
-      <!-- Strong Wind Card -->
-      <div class="card">
+
+      <!-- Карточка: Сильный ветер -->
+      <div class="wind-card">
         <h3>Сильный ветер (15+ узлов)</h3>
         <h4>Грот (Main Sail)</h4>
         <table>
-          <tr>
-            <th>Параметр</th>
-            <th>Настройка</th>
-          </tr>
+          <tr><th>Параметр</th><th>Настройка</th></tr>
           <tr>
             <td>Натяжение штага</td>
-            <td>Сильное, туго натянуть</td>
+            <td>Сильное – убрать складки</td>
           </tr>
           <tr>
             <td>Натяжение гика</td>
@@ -331,7 +334,7 @@
           </tr>
           <tr>
             <td>Оттяжка гика</td>
-            <td>Максимально натянут</td>
+            <td>Максимально натянуть</td>
           </tr>
           <tr>
             <td>Угол атаки</td>
@@ -344,10 +347,7 @@
         </table>
         <h4>Стаксель (Jib)</h4>
         <table>
-          <tr>
-            <th>Параметр</th>
-            <th>Настройка</th>
-          </tr>
+          <tr><th>Параметр</th><th>Настройка</th></tr>
           <tr>
             <td>Натяжение фала</td>
             <td>Сильное</td>
@@ -363,10 +363,7 @@
         </table>
         <h4>Спинакер (Spinnaker)</h4>
         <table>
-          <tr>
-            <th>Параметр</th>
-            <th>Настройка</th>
-          </tr>
+          <tr><th>Параметр</th><th>Настройка</th></tr>
           <tr>
             <td>Настройка шкотов</td>
             <td>Умеренно подобраны</td>
@@ -383,8 +380,7 @@
       </div>
     </div>
   </div>
-  
-  <!-- Footer -->
+
   <footer>
     <p>&copy; 2025 Windwise. Все права защищены.</p>
   </footer>

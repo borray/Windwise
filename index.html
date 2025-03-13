@@ -19,18 +19,23 @@
       color: #333;
       overflow-x: hidden;
     }
-
+    
     /* Анимации */
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
     @keyframes slideIn {
       from { opacity: 0; transform: translateY(80px); }
-      to { opacity: 1; transform: translateY(0); }
+      to   { opacity: 1; transform: translateY(0); }
     }
-
-    /* Секция hero с градиентом и flex-центровкой */
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    
+    /* Hero-секция с градиентом и flex-центрированием */
     .hero {
       display: flex;
       align-items: center;
@@ -66,7 +71,7 @@
       vertical-align: top;
       margin-left: 2px;
     }
-    /* Центрирование текста в hero с flexbox */
+    /* Центрированный контент в hero */
     .hero-content {
       display: flex;
       flex-direction: column;
@@ -86,7 +91,7 @@
       max-width: 600px;
       line-height: 1.5;
     }
-
+    
     /* Основной контейнер */
     .container {
       max-width: 1000px;
@@ -142,7 +147,44 @@
       font-weight: bold;
       text-align: center;
     }
-
+    
+    /* Новый блок "Основные понятия" */
+    .concepts-block {
+      max-width: 1000px;
+      margin: 40px auto;
+      text-align: center;
+      animation: fadeIn 1.5s ease forwards;
+      position: relative;
+    }
+    .concepts-button {
+      position: relative;
+      display: inline-block;
+      padding: 15px 30px;
+      font-size: 1.4em;
+      color: #007BFF;
+      background: linear-gradient(120deg, #e0f7ff, #b3e5fc);
+      border: 2px solid #007BFF;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: transform 0.3s, background 0.3s;
+    }
+    .concepts-button:hover {
+      transform: scale(1.05);
+      background: linear-gradient(120deg, #b3e5fc, #80d8ff);
+    }
+    /* Маленькая пульсирующая метка "Вспомни!" в углу кнопки */
+    .concepts-button .concepts-label {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background: #007BFF;
+      color: #fff;
+      padding: 3px 8px;
+      font-size: 0.7em;
+      border-radius: 5px;
+      animation: pulse 1.5s infinite;
+    }
+    
     /* Футер */
     footer {
       background-color: #333;
@@ -154,8 +196,8 @@
     footer p {
       margin: 0;
     }
-
-    /* Метка Beta в правом нижнем углу */
+    
+    /* Метка Beta */
     .beta-badge {
       position: fixed;
       bottom: 20px;
@@ -174,7 +216,7 @@
     .beta-badge:hover {
       transform: rotate(0deg);
     }
-
+    
     /* Оверлей модального окна для Beta */
     .overlay {
       position: fixed;
@@ -249,7 +291,7 @@
     </div>
   </section>
 
-  <!-- Main Container -->
+  <!-- Main Container with Navigation Cards -->
   <div class="container">
     <h2>Выберите свой класс</h2>
     <div class="nav-cards">
@@ -263,10 +305,18 @@
       </a>
     </div>
   </div>
-
+  
+  <!-- Concepts Block: Separate section with the "Основные понятия" button -->
+  <div class="concepts-block">
+    <a href="info.html" class="concepts-button">
+      Основные понятия
+      <span class="concepts-label">Вспомни!</span>
+    </a>
+  </div>
+  
   <!-- Beta Badge -->
   <div class="beta-badge" id="betaBadge">Beta</div>
-
+  
   <!-- Modal Overlay for Beta Information -->
   <div class="overlay" id="betaModal">
     <div class="modal">
@@ -284,7 +334,7 @@
   <footer>
     <p>&copy; 2025 Windwise. Все права защищены.</p>
   </footer>
-
+  
   <script>
     // Beta badge modal functionality
     const betaBadge = document.getElementById('betaBadge');

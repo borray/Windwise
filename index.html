@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <link rel="icon" type="image/x-icon" href="logo.ico">
   <meta charset="UTF-8">
   <title>Windwise - Главная страница</title>
+  <link rel="icon" type="image/x-icon" href="logo.ico">
   <style>
-    /* Global settings */
+    /* Общие стили и сброс */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -17,48 +17,45 @@
       font-family: Arial, sans-serif;
       background: #f4f4f4;
       color: #333;
-      overflow-x: hidden; /* Prevent horizontal scroll */
+      overflow-x: hidden;
     }
 
-    /* Keyframes for smooth animations */
-    @keyframes fadeInDown {
-      0% { opacity: 0; transform: translateY(-50px); }
-      100% { opacity: 1; transform: translateY(0); }
+    /* Анимации */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-    @keyframes fadeInUp {
-      0% { opacity: 0; transform: translateY(50px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes slideInUp {
-      0% { opacity: 0; transform: translateY(80px); }
-      100% { opacity: 1; transform: translateY(0); }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(80px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Hero section with a gradient background */
+    /* Секция hero с градиентом и flex-центровкой */
     .hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       position: relative;
       width: 100%;
-      height: 70vh; /* 70% of the viewport height */
+      height: 70vh;
       background: linear-gradient(120deg, #007BFF 0%, #00b4ff 100%);
       border-bottom-left-radius: 100px 50px;
       border-bottom-right-radius: 100px 50px;
       overflow: hidden;
-      animation: fadeInDown 1s ease forwards;
+      animation: fadeIn 1s ease forwards;
     }
-
-    /* Logo in top-left corner */
+    /* Логотип в верхнем левом углу */
     .logo-container {
       position: absolute;
       top: 20px;
       left: 20px;
       cursor: pointer;
       z-index: 10;
-      animation: fadeInDown 1s ease forwards;
+      animation: fadeIn 1s ease forwards;
     }
     .logo {
       background-color: #fff;
       border: 2px solid #007BFF;
-      display: inline-block;
       padding: 10px 20px;
       font-size: 2em;
       color: #007BFF;
@@ -69,16 +66,16 @@
       vertical-align: top;
       margin-left: 2px;
     }
-
-    /* Hero content centered */
+    /* Центрирование текста в hero с flexbox */
     .hero-content {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       text-align: center;
       color: #fff;
-      animation: fadeInUp 1.2s ease forwards;
+      animation: fadeIn 1.2s ease forwards;
+      padding: 0 20px;
     }
     .hero-content h1 {
       font-size: 3em;
@@ -87,11 +84,10 @@
     .hero-content p {
       font-size: 1.2em;
       max-width: 600px;
-      margin: 0 auto;
       line-height: 1.5;
     }
 
-    /* Main container below hero */
+    /* Основной контейнер */
     .container {
       max-width: 1000px;
       margin: -40px auto 0;
@@ -99,24 +95,21 @@
       background-color: #fff;
       border-radius: 20px;
       box-shadow: 0 0 20px rgba(0,0,0,0.1);
-      position: relative;
-      animation: fadeInUp 1.5s ease forwards;
+      animation: fadeIn 1.5s ease forwards;
     }
     .container h2 {
-      margin-top: 0;
       text-align: center;
+      margin-top: 0;
       color: #007BFF;
       font-weight: normal;
     }
-
-    /* Card-style buttons for Optimist & 420 */
     .nav-cards {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 40px;
       margin-top: 40px;
-      animation: slideInUp 1.8s ease forwards;
+      animation: slideIn 1.8s ease forwards;
     }
     .nav-card {
       display: flex;
@@ -150,7 +143,7 @@
       text-align: center;
     }
 
-    /* Footer */
+    /* Футер */
     footer {
       background-color: #333;
       color: #fff;
@@ -162,7 +155,7 @@
       margin: 0;
     }
 
-    /* Beta Badge - fixed in bottom right */
+    /* Метка Beta в правом нижнем углу */
     .beta-badge {
       position: fixed;
       bottom: 20px;
@@ -182,13 +175,11 @@
       transform: rotate(0deg);
     }
 
-    /* Modal Overlay for Beta Information */
+    /* Оверлей модального окна для Beta */
     .overlay {
       position: fixed;
-      top: 0; 
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       background-color: rgba(0,0,0,0.5);
       opacity: 0;
       pointer-events: none;
@@ -201,8 +192,7 @@
     }
     .modal {
       position: absolute;
-      top: 50%;
-      left: 50%;
+      top: 50%; left: 50%;
       width: 80%;
       max-width: 600px;
       background-color: #fff;
@@ -283,7 +273,7 @@
       <span class="close-button" id="closeBeta">&times;</span>
       <h2>Сайт в бета-версии</h2>
       <p>
-        Этот сайт находится в стадии разработки и еще не готов к полномасштабному использованию.
+        Этот сайт находится в стадии разработки и ещё не готов к полномасштабному использованию.
         Дизайн и функциональность могут измениться. Ознакомьтесь с исходным кодом и обновлениями на нашем 
         <a href="https://github.com/borray/Windwise" target="_blank">GitHub</a>.
       </p>
@@ -300,7 +290,7 @@
     const betaBadge = document.getElementById('betaBadge');
     const betaModal = document.getElementById('betaModal');
     const closeBeta = document.getElementById('closeBeta');
-
+    
     betaBadge.addEventListener('click', () => {
       betaModal.classList.add('active');
     });
